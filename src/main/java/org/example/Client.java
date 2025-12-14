@@ -1,0 +1,91 @@
+package org.example;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Client {
+
+    private String name;
+    private String lastName;
+    private int penisSize;
+    private List<Product> basket = new ArrayList<>();
+    private double totalPrice = 0;
+
+    public Client(String name, String lastName) {
+        this.name = name;
+        this.lastName = lastName;
+    }
+
+    public Client(String name, String lastName, int penisSize) {
+        this.name = name;
+        this.lastName = lastName;
+        this.penisSize = penisSize;
+    }
+
+    public void buy(String nameProduct, double productPrice) {
+        Product product = new Product(nameProduct, productPrice);
+        this.basket.add(product);
+        this.totalPrice = +productPrice;
+    }
+
+    public void buy(String productName, double productPrice, int productSize) {
+        Product product = new Product(productName, productPrice, productSize);
+        this.basket.add(product);
+        this.totalPrice = +productPrice;
+    }
+
+
+    public String getName() {
+        return name;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public int getPenisSize() {
+        return penisSize;
+    }
+
+    public List<Product> getBasket() {
+        return basket;
+    }
+
+    public double getTotalPrice() {
+        return totalPrice;
+    }
+
+    public static String bestBuyer(List<Client> clients) {
+        Client bestBuyer = null;
+        for (Client client : clients) {
+            if (bestBuyer == null || bestBuyer.totalPrice < client.totalPrice) {
+                bestBuyer = client;
+            }
+        }
+        return bestBuyer.name + " " + bestBuyer.lastName;
+    }
+
+    public static void whoBuyCondom(List<Client> clients) {
+        System.out.println("Condom buyers: ");
+        for (Client client : clients) {
+            for (Product product : client.getBasket()) {
+                if (product.getName().equals("durex")) {
+                    System.out.println(client.name + " " + client.lastName);
+                }
+            }
+        }
+
+    }
+
+    public static void whoPretendToHaveBiggerDick(List<Client> clients) {
+        System.out.println("Pretenders: ");
+        for (Client client : clients) {
+            for (Product product : client.getBasket()) {
+                if (product.getName().equals("durex") && !(client.penisSize == product.getCondomSize())) {
+                    System.out.println(client.name + " " + client.lastName);
+                }
+            }
+        }
+
+    }
+}
