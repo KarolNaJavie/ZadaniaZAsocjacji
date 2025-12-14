@@ -7,44 +7,17 @@ import java.util.Map;
 public class Main {
     static void main() {
 
-        Adres adresKrakow = new Adres(
-                "Krakow",
-                "Bagrowa",
-                "78",
-                "14",
-                "30-733"
-        );
+        Adres adresKrakow = new Adres("Krakow", "Bagrowa", "78", "14", "30-733");
 
-        Adres adresLegnica = new Adres(
-                "Legnica",
-                "Nowowiejska",
-                "26",
-                "",
-                "59-220"
-        );
+        Adres adresLegnica = new Adres("Legnica", "Nowowiejska", "26", "", "59-220");
 
-        Osoba profesorJan = new Osoba(
-                "Jan",
-                "Kowalski",
-                1980,
-                "dr",
-                adresKrakow
-        );
+        Osoba profesorJan = new Osoba("Jan", "Kowalski", 1980, "dr", adresKrakow);
 
-        Osoba studentAnna = new Osoba(
-                "Anna",
-                "Nowak",
-                1998,
-                adresKrakow //ten sam aders bo mieszkaja w tym samym mieszkaniu
+        Osoba studentAnna = new Osoba("Anna", "Nowak", 1998, adresKrakow //ten sam aders bo mieszkaja w tym samym mieszkaniu
         );
 
 
-        Osoba biznesmenPiotr = new Osoba(
-                "Piotr",
-                "Kowalczyk",
-                1990,
-                adresLegnica
-        );
+        Osoba biznesmenPiotr = new Osoba("Piotr", "Kowalczyk", 1990, adresLegnica);
 
         profesorJan.dodajZnajomego(studentAnna);
         profesorJan.dodajZnajomego(biznesmenPiotr);
@@ -342,7 +315,7 @@ public class Main {
         }
 
 
-
+        System.out.println("\nzadanie6\n");
 /*Zadania.Zadanie6.
 Napisz krótki program do zarządzania sklepem internetowym.
 W sklepie pracuje obsługa(imie, nazwisko, adres, data rozpoczęcia pracy). Osoby z obsługi mogą zostać managerami.
@@ -351,10 +324,34 @@ Sklep może zarejestrować nowego klienta(imie, nazwisko, adres, data rejestracj
 W sklepie powinna być możliwość dokonania zakupu, co usuwa koszyk klientowi,
  	ale umieszcza jego odpowiednik w "historii zamówień".
 */
+        Obsluga stu = new Obsluga("Stewart", "Malutki", "Bagienna 12, Komorniki", "12.12.2012");
+        Kupujacy tomcio = new Kupujacy("Tomcio", "Paluch", "Kielbasiana 1, Sztokholm", "14.12.2025");
+        Artykul papierosy = new Artykul("Papierosy LM", 13.60);
+        Artykul piwo = new Artykul("Piwo Tatra", 3.50);
+        Artykul papierToaletowy = new Artykul("Papier Velvet", 5.60);
+        Artykul chleb = new Artykul("chleb", 2.60);
+        Koszyk koszyk1 = new Koszyk();
+        Koszyk koszyk2 = new Koszyk();
 
+        stu.promocjaNaMenadzera();
 
+        koszyk1.dodajArtykul(papierosy);
+        koszyk1.dodajArtykul(papierToaletowy);
+        koszyk1.dodajArtykul(chleb);
+        koszyk1.dodajArtykul(piwo);
 
+        koszyk2.dodajArtykul(papierToaletowy);
+        koszyk2.dodajArtykul(chleb);
+        koszyk2.dodajArtykul(piwo);
+        koszyk2.dodajArtykul(piwo);
+        koszyk2.dodajArtykul(piwo);
 
+        tomcio.dodajKoszyk(koszyk1);
+        tomcio.dodajKoszyk(koszyk2);
+        tomcio.finalizujKoszyk(koszyk1);
+        tomcio.finalizujKoszyk(koszyk2);
+
+        System.out.println("\n zadanie7\n");
 /*Zadania.Zadanie7.
 Napisz program do zarządzania kursami.
 Nauczyciel ma imię, nazwisko, datę zatrudnienia i może uczyć wielu języków
@@ -365,12 +362,42 @@ Nauczyciel może mieć wielu studentów
 zbuduj program tak by dało się dodawać lekcje (termin)
 
 -przypisywanie kursantowi Nauczyciela musi weryfikować język
--lekcja nie może być dodawana w przeszłości.
+-lekcja nie może być dodawana w przeszłości.  //update operowanie data wykracza to poza moje mozliwosci
 -znajdz kursanta, który ma najwięcej lekcji
 -znajdz nauczyciela, który ma najwięcej kursantów
 
 */
+        Nauczyciel chrzanowski = new Nauczyciel("Zdzislaw", "Chrzanowski", "1.01.2025");
+        Nauczyciel moniuszko = new Nauczyciel("Zdzislaw", "Moniuszko", "12.05.2024");
+        List<Lekcja> lekcje = new ArrayList<>();
+        Jezyk hiszpanski = new Jezyk("Hiszpanski");
+        Jezyk niemiecki = new Jezyk("Niemiecki");
+        Student michalina = new Student("Michalina", "Konopnicka", hiszpanski);
+        Student charlie = new Student("Charles", "Manson", niemiecki);
+        Student najwiecejLekcji = null;
+        Nauczyciel najwiecejUczy = null;
 
+        chrzanowski.dodajJezykNauzania(hiszpanski);
+        moniuszko.dodajJezykNauzania(niemiecki);
+        michalina.przypiszNauczyciela(chrzanowski);
+        charlie.przypiszNauczyciela(moniuszko);
 
+        Lekcja lekcja1 = new Lekcja(hiszpanski, chrzanowski, michalina, "17.12.2025, 15:00");
+        Lekcja lekcja2 = new Lekcja(niemiecki, moniuszko, charlie, "17.12.2025, 17:00");
+        Lekcja lekcja3 = new Lekcja(niemiecki, moniuszko, charlie, "18.12.2025, 17:00");
+        lekcje.add(lekcja1);
+        lekcje.add(lekcja2);
+        lekcje.add(lekcja3);
+
+        for (Lekcja lekcja : lekcje) {
+            if (najwiecejLekcji == null || najwiecejLekcji.getLiczbaLekcji() < lekcja.getStudent().getLiczbaLekcji()) {
+                najwiecejLekcji = lekcja.getStudent();
+            }
+            if (najwiecejUczy == null || najwiecejUczy.getLiczbaLekcji() < lekcja.getNauczyciel().getLiczbaLekcji()) {
+                najwiecejUczy = lekcja.getNauczyciel();
+            }
+        }
+        System.out.println("Najwiecej lekcji ma: " + najwiecejLekcji);
+        System.out.println("Najwiecej lekcji prowadzi: " + najwiecejUczy);
     }
 }
