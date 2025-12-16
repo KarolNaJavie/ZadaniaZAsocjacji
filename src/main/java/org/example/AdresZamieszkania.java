@@ -1,13 +1,13 @@
 package org.example;
 
-public class Adres {
+public class AdresZamieszkania {
     private String miasto;
     private String ulica;
-    private String nrBudynku;
-    private String nrLokalu;
+    private int nrBudynku;
+    private int nrLokalu;
     private String kodPocztowy;
 
-    public Adres(String miasto, String ulica, String nrBudynku, String nrLokalu, String kodPocztowy) {
+    public AdresZamieszkania(String miasto, String ulica, int nrBudynku, int nrLokalu, String kodPocztowy) {
         this.miasto = miasto;
         this.ulica = ulica;
         this.nrBudynku = nrBudynku;
@@ -15,7 +15,7 @@ public class Adres {
         this.kodPocztowy = kodPocztowy;
     }
 
-    public Adres(String miasto, String ulica, String nrBudynku, String kodPocztowy) {
+    public AdresZamieszkania(String miasto, String ulica, int nrBudynku, String kodPocztowy) {
         this.miasto = miasto;
         this.ulica = ulica;
         this.nrBudynku = nrBudynku;
@@ -30,19 +30,19 @@ public class Adres {
         this.miasto = miasto;
     }
 
-    public String getNrLokalu() {
+    public int getNrLokalu() {
         return nrLokalu;
     }
 
-    public void setNrLokalu(String nrLokalu) {
+    public void setNrLokalu(int nrLokalu) {
         this.nrLokalu = nrLokalu;
     }
 
-    public String getNrBudynku() {
+    public int getNrBudynku() {
         return nrBudynku;
     }
 
-    public void setNrBudynku(String nrBudynku) {
+    public void setNrBudynku(int nrBudynku) {
         this.nrBudynku = nrBudynku;
     }
 
@@ -62,8 +62,4 @@ public class Adres {
         this.kodPocztowy = kodPocztowy;
     }
 
-    @Override
-    public String toString() {
-        return miasto + " " + ulica + " " + nrBudynku + "/" + nrLokalu + " " + kodPocztowy;
-    }
 }

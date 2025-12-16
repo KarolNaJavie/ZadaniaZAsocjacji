@@ -9,7 +9,7 @@ public class Main {
 
         Adres adresKrakow = new Adres("Krakow", "Bagrowa", "78", "14", "30-733");
 
-        Adres adresLegnica = new Adres("Legnica", "Nowowiejska", "26", "", "59-220");
+        Adres adresLegnica = new Adres("Legnica", "Nowowiejska", "26", "59-220");
 
         Osoba profesorJan = new Osoba("Jan", "Kowalski", 1980, "dr", adresKrakow);
 
@@ -42,7 +42,6 @@ public class Main {
         }
         System.out.println("\n Zadanie 1 \n");
         //ZADANIA
-        //todo zastosowac to samo co dla osoby w toStgring tylko dla adresu zeby nr lokalu byl opcjonalny (konstruktor tez)
         //Poczytah sobiej o duzych liczbach czyi BigDecimal w java
 
         /*Zadania.Zadanie1.
@@ -64,14 +63,13 @@ public class Main {
         clients.add(johny);
         clients.add(angelina);
         clients.add(roman);
-        //todo zamienic na osobne klasy dla produktu np produkt -> gumka
         johny.buy("durex", 5.99, 28);
         johny.buy("Cucumber", 1.99);
         johny.buy("Waseline", 0.55);
         roman.buy("durex", 5.99, 24);
-        roman.buy("Vodka Gorbachov 0.7l", 6.12);
-        angelina.buy("Red Wine", 8.99);
-        angelina.buy("Blue LM", 10.00);
+        roman.buy("Vodka Gorbachov", 6.12, 0.7, 40);
+        angelina.buy("Red Wine", 8.99, 0.7, 12);
+        angelina.buy("LM", 10.00, "Blue");
         System.out.println("\nTop client is: " + Client.bestBuyer(clients));
         System.out.println();
         Client.whoBuyCondom(clients);
@@ -324,8 +322,10 @@ Sklep może zarejestrować nowego klienta(imie, nazwisko, adres, data rejestracj
 W sklepie powinna być możliwość dokonania zakupu, co usuwa koszyk klientowi,
  	ale umieszcza jego odpowiednik w "historii zamówień".
 */
-        Obsluga stu = new Obsluga("Stewart", "Malutki", "Bagienna 12, Komorniki", "12.12.2012");
-        Kupujacy tomcio = new Kupujacy("Tomcio", "Paluch", "Kielbasiana 1, Sztokholm", "14.12.2025");
+        AdresZamieszkania stuAdres = new AdresZamieszkania("Komorniki", "Bagienna", 12, "66-666");
+        Obsluga stu = new Obsluga("Stewart", "Malutki", stuAdres, "12.12.2012");
+        AdresZamieszkania tomcioAdres = new AdresZamieszkania("Sztokholm", "Kielbasiana", 1, 1, "12-234");
+        Kupujacy tomcio = new Kupujacy("Tomcio", "Paluch", tomcioAdres, "14.12.2025");
         Artykul papierosy = new Artykul("Papierosy LM", 13.60);
         Artykul piwo = new Artykul("Piwo Tatra", 3.50);
         Artykul papierToaletowy = new Artykul("Papier Velvet", 5.60);
@@ -393,7 +393,7 @@ zbuduj program tak by dało się dodawać lekcje (termin)
             if (najwiecejLekcji == null || najwiecejLekcji.getLiczbaLekcji() < lekcja.getStudent().getLiczbaLekcji()) {
                 najwiecejLekcji = lekcja.getStudent();
             }
-            if (najwiecejUczy == null || najwiecejUczy.getLiczbaLekcji() < lekcja.getNauczyciel().getLiczbaLekcji()) {
+            if (najwiecejUczy == null || najwiecejUczy.getStudenciNauczani().size() < lekcja.getNauczyciel().getStudenciNauczani().size()) {
                 najwiecejUczy = lekcja.getNauczyciel();
             }
         }

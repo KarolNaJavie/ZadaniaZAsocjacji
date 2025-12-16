@@ -1,29 +1,13 @@
 package org.example;
 
-public class Obsluga {
-    private String imie;
-    private String nazwisko;
-    private String adres;
+public class Obsluga extends Czlowiek {
+
     private String dataRozpoczeciaPracy;
     private boolean menadzer;
 
-    public Obsluga(String imie, String nazwisko, String adres, String dataRozpoczeciaPracy) {
-        this.imie = imie;
-        this.nazwisko = nazwisko;
-        this.adres = adres;
+    public Obsluga(String imie, String nazwisko, AdresZamieszkania adres, String dataRozpoczeciaPracy) {
+        super(imie, nazwisko, adres);
         this.dataRozpoczeciaPracy = dataRozpoczeciaPracy;
-    }
-
-    public String getImie() {
-        return imie;
-    }
-
-    public String getNazwisko() {
-        return nazwisko;
-    }
-
-    public String getAdres() {
-        return adres;
     }
 
     public String getDataRozpoczeciaPracy() {

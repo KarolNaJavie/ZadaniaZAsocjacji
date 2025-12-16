@@ -3,18 +3,13 @@ package org.example;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Kupujacy {
-    private String imie;
-    private String nazwisko;
-    private String adres;
+public class Kupujacy extends Czlowiek {
     private String dataRejestracji;
     private List<Koszyk> koszyki = new ArrayList<>();
     private List<Koszyk> historiaKoszykow = new ArrayList<>();
 
-    public Kupujacy(String imie, String nazwisko, String adres, String dataRejestracji) {
-        this.imie = imie;
-        this.nazwisko = nazwisko;
-        this.adres = adres;
+    public Kupujacy(String imie, String nazwisko, AdresZamieszkania adres, String dataRejestracji) {
+        super(imie, nazwisko, adres);
         this.dataRejestracji = dataRejestracji;
     }
 

@@ -13,7 +13,6 @@ public class Client {
 
     public Client(String name, String lastName) {
         this.name = name;
-        this.lastName = lastName;
     }
 
     public Client(String name, String lastName, int penisSize) {
@@ -22,15 +21,28 @@ public class Client {
         this.penisSize = penisSize;
     }
 
+
     public void buy(String nameProduct, double productPrice) {
-        Product product = new Product(nameProduct, productPrice);
-        this.basket.add(product);
+        OthersProducts othersProducts = new OthersProducts(nameProduct, productPrice);
+        this.basket.add(othersProducts);
+        this.totalPrice = +productPrice;
+    }
+
+    public void buy(String nameProduct, double productPrice, String taste) {
+        Ciggaretes ciggaretes = new Ciggaretes(nameProduct, productPrice, taste);
+        this.basket.add(ciggaretes);
         this.totalPrice = +productPrice;
     }
 
     public void buy(String productName, double productPrice, int productSize) {
-        Product product = new Product(productName, productPrice, productSize);
-        this.basket.add(product);
+        Durex durex = new Durex(productName, productPrice, productSize);
+        this.basket.add(durex);
+        this.totalPrice = +productPrice;
+    }
+
+    public void buy(String productName, double productPrice, double litres, int procent) {
+        Alkohol alkohol = new Alkohol(productName, productPrice, litres, procent);
+        this.basket.add(alkohol);
         this.totalPrice = +productPrice;
     }
 
@@ -69,7 +81,7 @@ public class Client {
         System.out.println("Condom buyers: ");
         for (Client client : clients) {
             for (Product product : client.getBasket()) {
-                if (product.getName().equals("durex")) {
+                if (product instanceof Durex) {
                     System.out.println(client.name + " " + client.lastName);
                 }
             }
@@ -81,7 +93,7 @@ public class Client {
         System.out.println("Pretenders: ");
         for (Client client : clients) {
             for (Product product : client.getBasket()) {
-                if (product.getName().equals("durex") && !(client.penisSize == product.getCondomSize())) {
+                if (product instanceof Durex && client.getPenisSize() == ((Durex) product).getCondomSize()) {
                     System.out.println(client.name + " " + client.lastName);
                 }
             }
