@@ -21,7 +21,7 @@ public class Kupujacy extends Czlowiek {
         if (koszyki.contains(koszyk)) {
             koszyki.remove(koszyk);
             historiaKoszykow.add(koszyk);
-            System.out.println("koszyk przeniesiony do histori");
+            System.out.println("koszyk przeniesiony do historii");
         } else {
             System.out.println("Klient nie ma takiego koszyka!");
         }

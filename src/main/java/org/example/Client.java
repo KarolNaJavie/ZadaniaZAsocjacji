@@ -21,30 +21,39 @@ public class Client {
         this.penisSize = penisSize;
     }
 
+    public void buy (Product product) {
+        if (product.getClient() != null) {
+            throw new IllegalArgumentException("Produkt jest juz zajety!");
+        }
 
-    public void buy(String nameProduct, double productPrice) {
-        OthersProducts othersProducts = new OthersProducts(nameProduct, productPrice);
-        this.basket.add(othersProducts);
-        this.totalPrice = +productPrice;
+        basket.add(product);
+        product.setClient(this);
+        this.totalPrice = + product.getPrice();
     }
 
-    public void buy(String nameProduct, double productPrice, String taste) {
-        Ciggaretes ciggaretes = new Ciggaretes(nameProduct, productPrice, taste);
-        this.basket.add(ciggaretes);
-        this.totalPrice = +productPrice;
-    }
-
-    public void buy(String productName, double productPrice, int productSize) {
-        Durex durex = new Durex(productName, productPrice, productSize);
-        this.basket.add(durex);
-        this.totalPrice = +productPrice;
-    }
-
-    public void buy(String productName, double productPrice, double litres, int procent) {
-        Alkohol alkohol = new Alkohol(productName, productPrice, litres, procent);
-        this.basket.add(alkohol);
-        this.totalPrice = +productPrice;
-    }
+//    public void buy(String nameProduct, double productPrice) {
+//        OthersProducts othersProducts = new OthersProducts(nameProduct, productPrice);
+//        this.basket.add(othersProducts);
+//        this.totalPrice = +productPrice;
+//    }
+//
+//    public void buy(String nameProduct, double productPrice, String taste) {
+//        Ciggaretes ciggaretes = new Ciggaretes(nameProduct, productPrice, taste);
+//        this.basket.add(ciggaretes);
+//        this.totalPrice = +productPrice;
+//    }
+//
+//    public void buy(String productName, double productPrice, int productSize) {
+//        Durex durex = new Durex(productName, productPrice, productSize);
+//        this.basket.add(durex);
+//        this.totalPrice = +productPrice;
+//    }
+//
+//    public void buy(String productName, double productPrice, double litres, int procent) {
+//        Alkohol alkohol = new Alkohol(productName, productPrice, litres, procent);
+//        this.basket.add(alkohol);
+//        this.totalPrice = +productPrice;
+//    }
 
 
     public String getName() {
