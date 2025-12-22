@@ -61,23 +61,23 @@ public class Main {
         Client angelina = new Client("Angelina", "Jedwabna");
 
         //produkty
-        Durex gumka  = new Durex("durex", 5.99, 28);
-        johny.buy(gumka);
+        Durex gumkaL  = new Durex("durex", 5.99, 28);
+        Durex gumkaM  = new Durex("durex", 5.99, 24);
+        OthersProducts ogor = new OthersProducts("Cucumber", 1.99);
+        OthersProducts waseline = new OthersProducts("Waseline", 0.99);
+        Alkohol vodka = new Alkohol("Vodka Gorbachov", 6.12, 0.7, 40);
+        Alkohol wine = new Alkohol("Red Wine", 8.99, 0.7, 12);
+        Ciggaretes lm = new Ciggaretes("LM", 10, "blue");
+        johny.buy(gumkaL);
+        johny.buy(ogor);
+        johny.buy(waseline);
+        roman.buy(gumkaM);
+
         List<Client> clients = new ArrayList<>();
         clients.add(johny);
         clients.add(angelina);
         clients.add(roman);
-        //todo zmienic w ten sposob dla wszystkich produktow
-        //poczytac o rodzajach wyjatkow w java, checked i unchecked
-        // i pocztac o big decimalach
 
-//        johny.buy("durex", 5.99, 28);
-//        johny.buy("Cucumber", 1.99);
-//        johny.buy("Waseline", 0.55);
-//        roman.buy("durex", 5.99, 24);
-//        roman.buy("Vodka Gorbachov", 6.12, 0.7, 40);
-//        angelina.buy("Red Wine", 8.99, 0.7, 12);
-//        angelina.buy("LM", 10.00, "Blue");
         System.out.println("\nTop client is: " + Client.bestBuyer(clients));
         System.out.println();
         Client.whoBuyCondom(clients);
@@ -340,8 +340,7 @@ W sklepie powinna być możliwość dokonania zakupu, co usuwa koszyk klientowi,
         Artykul chleb = new Artykul("chleb", 2.60);
         Koszyk koszyk1 = new Koszyk();
         Koszyk koszyk2 = new Koszyk();
-        //todo dodaj relacje koszyk kupujacy
-        //kupujacy ma wiele koszykow, koszykl ma 1 kupujacego
+
         stu.promocjaNaMenadzera();
 
         koszyk1.dodajArtykul(papierosy);

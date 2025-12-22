@@ -15,6 +15,8 @@ public class Kupujacy extends Czlowiek {
 
     public void dodajKoszyk(Koszyk koszyk) {
         koszyki.add(koszyk);
+        koszyk.setWlascicielKoszyka(this);
+
     }
 
     public void finalizujKoszyk(Koszyk koszyk) {
